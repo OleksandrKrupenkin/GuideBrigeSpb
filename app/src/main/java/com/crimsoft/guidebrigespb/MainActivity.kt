@@ -174,12 +174,10 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener {
 
     fun handlePurchases(purchases: List<Purchase>) {
         for (purchase in purchases) {
-            //if item is purchased
+
 
             if (PRODUCT_ID == purchase.purchaseToken && purchase.purchaseState == Purchase.PurchaseState.PURCHASED) {
                 if (!verifyValidSignature(purchase.originalJson, purchase.signature)) {
-                    // Invalid purchase
-                    // show error to user
 
                     Toast.makeText(
                         applicationContext,
@@ -188,9 +186,6 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener {
                     ).show()
                     return
                 }
-                // else purchase is valid
-                //if item is purchased and not acknowledged
-
 
                 if (!purchase.isAcknowledged) {
                     val acknowledgePurchaseParams = AcknowledgePurchaseParams.newBuilder()
@@ -198,7 +193,7 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener {
                         .build()
                     billingClient!!.acknowledgePurchase(acknowledgePurchaseParams, ackPurchase)
                 }
-                //else item is purchased and also acknowledged
+
                 else {
                     // Grant entitlement to the user on item purchase
                     // restart activity
@@ -241,7 +236,6 @@ class MainActivity : AppCompatActivity(), PurchasesUpdatedListener {
 
     private fun verifyValidSignature(signedData: String, signature: String): Boolean {
         return try {
-            // To get key go to Developer Console > Select your app > Development Tools > Services & APIs.
 
             val base64Key =
                 "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlOV33HSf18+mzBg+SxhftjHvQn2lIpV0DE3sDtIzA7lPd0fsV6p0MBSqORI0D2G7wBBEvDdqUrfnLdYMiZ7mcRp0p+fvGSg9B3Avud9LjiXAs2U1B86+T9WizJcaa0rDmxFABWxcYPodi6DJJd6LaVyfjipdkGjTrqfbVtVn+ldUyHMFzBrFdhk6bWeA1DpmDxS1JWLK+7Mo5VSylbT1b/FNokRx+JYgcN/Hhi78MnhsnP7/xfToPgYia9vqpp9eK1oiisPgGJ1eWqTTpEmmDnxTVANQN/WceV/i7KGMiFejdmL85g+v1bt4qf1INNSpU1v+d6geBJ4N++QXZ/+J8QIDAQAB"
