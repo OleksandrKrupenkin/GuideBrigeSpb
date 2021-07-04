@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/titleFragment2">
+
+    <fragment
+        android:id="@+id/titleFragment2"
+        android:name="com.crimsoft.guidebrigespb.TitleFragment"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_titleFragment2_to_descriptionFragment2"
+            app:destination="@id/descriptionFragment2" />
+        <action
+            android:id="@+id/action_titleFragment2_to_mapsFragment2"
+            app:destination="@id/mapsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment2"
+        android:name="com.crimsoft.guidebrigespb.DescriptionFragment"
+        android:label="fragment_description"
+        tools:layout="@layout/fragment_description" >
+        <action
+            android:id="@+id/action_descriptionFragment2_to_titleFragment2"
+            app:destination="@id/titleFragment2" />
+        <action
+            android:id="@+id/action_descriptionFragment2_to_mapsFragment2"
+            app:destination="@id/mapsFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment2"
+        android:name="com.crimsoft.guidebrigespb.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment2_to_descriptionFragment2"
+            app:destination="@id/descriptionFragment2" />
+        <action
+            android:id="@+id/action_mapsFragment2_to_titleFragment2"
+            app:destination="@id/titleFragment2" />
+    </fragment>
+</navigation>
